@@ -13,8 +13,14 @@ def create_onedrive_directdownload (onedrive_link):
 
 @app.route('/')
 def hello_world():
-    my_dict = {'Name':'Mugambo'}
-    return(my_dict)
+    try:
+        one_drive_link = "https://1drv.ms/x/s!AtIkLugUST4_gbt9Bp4t95oAEJXkbA?e=OVhXnA"
+        my_dict = {'Mugambo':'Khush Hua'}
+        return(my_dict)
+    except Exception as e:
+        my_dict = {'Mugambo':e}
+        return(my_dict)
+
 
 # @app.route("/spends_per_month",methods=["POST","GET"])
 # @app.route('/')
