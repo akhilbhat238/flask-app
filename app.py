@@ -18,7 +18,7 @@ def create_onedrive_directdownload (onedrive_link):
 
 # @app.route("/spends_per_month",methods=["POST","GET"])
 @app.route('/')
-def result():
+def hello_world():
     one_drive_link = "https://1drv.ms/x/s!AtIkLugUST4_gbt9Bp4t95oAEJXkbA?e=OVhXnA"
     one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
     xls = pd.ExcelFile(one_drive_direct_link)
