@@ -11,10 +11,10 @@ def create_onedrive_directdownload (onedrive_link):
     resultUrl = f"https://api.onedrive.com/v1.0/shares/u!{data_bytes64_String}/root/content"
     return resultUrl
 
-@app.route('/')
-def hello_world():
-    my_dict = {'Name':'Mugambo'}
-    return(my_dict)
+# @app.route('/')
+# def hello_world():
+#     my_dict = {'Name':'Mugambo'}
+#     return(my_dict)
 
 @app.route("/spends_per_month",methods=["POST","GET"])
 def result():
