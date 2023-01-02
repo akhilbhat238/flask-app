@@ -1,10 +1,10 @@
+import pandas as pd
+import base64
+from openpyxl import load_workbook
 from flask import Flask
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
-import pandas as pd
-import base64
-import openpyxl
 
 def create_onedrive_directdownload (onedrive_link):
     data_bytes64 = base64.b64encode(bytes(onedrive_link, 'utf-8'))
@@ -20,16 +20,20 @@ def hello_world():
         print(2)
         one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
         print(3)
-        xls = pd.read_excel(one_drive_direct_link)
+        xls = pd.ExcelFile(one_drive_direct_link)
+        print(xls.sheet_names)
         print(4)
-        my_dict = {'Mugambo':'Khush Hua'}
+        # my_dict = {'Mugambo':'Khush Hua'}
+        type_df = pd.read_excel(xls, 'Group_By_Type')
         print(5)
-        print(xls.head())
-        return(my_dict)
+        response = type_df.set_index("Row Labels").T.to_dict('list')
+        print(response)
+        return(response)
     except Exception as e:
+        print('user def exception')
         print(e)
         # my_dict = {'Mugambo':e}
-        return(e)
+        return({'Mugambo':'Sad Hua'})
 
 
 # @app.route("/spends_per_month",methods=["POST","GET"])
