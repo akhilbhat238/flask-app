@@ -27,7 +27,7 @@ def group_by_type():
         return(e)
 
 @app.route('/expenses_by_length')
-def group_by_type():
+def group_by_length():
     try:
         type_df = pd.read_excel(xls, 'Group_By_Length')
         response = type_df.set_index("Row Labels").T.to_dict('list')
