@@ -14,18 +14,19 @@ def create_onedrive_directdownload (onedrive_link):
 @app.route('/')
 def hello_world():
     try:
-        # print(1)
-        # one_drive_link = "https://1drv.ms/x/s!AtIkLugUST4_gbt9Bp4t95oAEJXkbA?e=OVhXnA"
-        # print(2)
-        # one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
-        # print(3)
-        # xls = pd.ExcelFile(one_drive_direct_link)
-        # print(4)
+        print(1)
+        one_drive_link = "https://1drv.ms/x/s!AtIkLugUST4_gbt9Bp4t95oAEJXkbA?e=OVhXnA"
+        print(2)
+        one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
+        print(3)
+        xls = pd.read_excel(one_drive_direct_link)
+        print(4)
         my_dict = {'Mugambo':'Khush Hua'}
         print(5)
+        print(xls.head())
         return(my_dict)
     except Exception as e:
-        # print(e)
+        print(e)
         # my_dict = {'Mugambo':e}
         return(e)
 
