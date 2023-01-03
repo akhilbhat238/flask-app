@@ -15,23 +15,27 @@ def create_onedrive_directdownload (onedrive_link):
 one_drive_link = "https://1drv.ms/x/s!AtIkLugUST4_gbt9Bp4t95oAEJXkbA?e=OVhXnA"
 one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
 xls = pd.ExcelFile(one_drive_direct_link)
+my_dict = {}
+
+def return_excel_data(sheet_name):
+    type_df = pd.read_excel(xls, sheet_name)
+    for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
+        my_dict[key] = value
+    return(my_dict)
+    
 
 @app.route('/expenses_by_type')
 def group_by_type():
     try:
-        type_df = pd.read_excel(xls, 'Group_By_Type')
-        response = type_df.set_index("Row Labels").T.to_dict('list')
-        return(response)
+        excel_response = return_excel_data('Group_By_Length')
+        return(excel_response)
     except Exception as e:
-        # 
         return(e)
 
 @app.route('/expenses_by_length')
 def group_by_length():
     try:
-        type_df = pd.read_excel(xls, 'Group_By_Length')
-        response = type_df.set_index("Row Labels").T.to_dict('list')
-        return(response)
+        excel_response = return_excel_data('Group_By_Type')
+        return(excel_response)
     except Exception as e:
-        # 
-        return(e)        
+        return(e)  
