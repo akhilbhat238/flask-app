@@ -23,11 +23,11 @@ def return_excel_data(sheet_name):
         for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
             my_dict[key] = value
         return(my_dict)
-    # elif sheet_name == 'Annual_Personal_Breakdown':
-    #     type_df = pd.read_excel(xls, sheet_name,header=3)
-    #     for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
-    #         my_dict[key] = value
-    #     return(my_dict)
+    elif sheet_name == 'Annual_Personal_Breakdown':
+        type_df = pd.read_excel(xls, sheet_name,header=3)
+        for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
+            my_dict[key] = value
+        return(my_dict)
     else:        
         type_df = pd.read_excel(xls, sheet_name,header=2)
         for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
@@ -53,17 +53,17 @@ def group_by_length():
         return(e)  
 
 @app.route('/one_time_expense')
-def group_by_length():
+def one_time_expense():
     try:
         excel_response = return_excel_data('One_Time_Expense')
         return(excel_response)
     except Exception as e:
         return(e)  
 
-# @app.route('/personal_expense_breakdown')
-# def group_by_length():
-#     try:
-#         excel_response = return_excel_data('Annual_Personal_Breakdown')
-#         return(excel_response)
-#     except Exception as e:
-#         return(e)  
+@app.route('/personal_expense_breakdown')
+def personal_expenses():
+    try:
+        excel_response = return_excel_data('Annual_Personal_Breakdown')
+        return(excel_response)
+    except Exception as e:
+        return(e)  
