@@ -23,11 +23,11 @@ def return_excel_data(sheet_name):
         for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
             my_dict[key] = value
         return(my_dict)
-    elif sheet_name == 'Annual_Personal_Breakdown':
-        type_df = pd.read_excel(xls, sheet_name,header=3)
-        for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
-            my_dict[key] = value
-        return(my_dict)
+    # elif sheet_name == 'Annual_Personal_Breakdown':
+    #     type_df = pd.read_excel(xls, sheet_name,header=3)
+    #     for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
+    #         my_dict[key] = value
+    #     return(my_dict)
     else:        
         type_df = pd.read_excel(xls, sheet_name,header=2)
         for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
