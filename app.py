@@ -32,25 +32,47 @@ def return_excel_data(sheet_name):
         type_df = pd.read_excel(xls, sheet_name,header=2)
         for key,value in zip(type_df['Row Labels'],type_df['Sum of Monthly Amount']):
             my_dict[key] = value
-        return(my_dict)
+        return(my_dict)    
 
-    
-
-@app.route('/expenses_by_type')
-def group_by_type():
+@app.route('/expenses_by_length')
+def group_by_length():
     try:
         excel_response = return_excel_data('Group_By_Length')
         return(excel_response)
     except Exception as e:
         return(e)
 
-@app.route('/expenses_by_length')
-def group_by_length():
+@app.route('/expenses_by_type')
+def group_by_type():
     try:
         excel_response = return_excel_data('Group_By_Type')
         return(excel_response)
     except Exception as e:
-        return(e)  
+        return(e) 
+
+@app.route('/expenses_by_category')
+def group_by_category():
+    try:
+        excel_response = return_excel_data('Group_By_Type_Category')
+        return(excel_response)
+    except Exception as e:
+        return(e) 
+
+@app.route('/annual_expense')
+def annual_expense():
+    try:
+        excel_response = return_excel_data('Amortized_Annual_Expenses')
+        return(excel_response)
+    except Exception as e:
+        return(e) 
+
+@app.route('/monthly_expense')
+def monthly_expense():
+    try:
+        excel_response = return_excel_data('Monthly_Repeated_Expenses')
+        return(excel_response)
+    except Exception as e:
+        return(e) 
 
 @app.route('/one_time_expense')
 def one_time_expense():
