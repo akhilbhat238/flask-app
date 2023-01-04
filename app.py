@@ -36,6 +36,7 @@ def return_excel_data(sheet_name):
 
 @app.route('/expenses_by_length')
 def group_by_length():
+    my_dict = {}
     try:
         excel_response = return_excel_data('Group_By_Length')
         return(excel_response)
@@ -44,6 +45,7 @@ def group_by_length():
 
 @app.route('/expenses_by_type')
 def group_by_type():
+    my_dict = {}
     try:
         excel_response = return_excel_data('Group_By_Type')
         return(excel_response)
