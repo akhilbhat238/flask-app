@@ -52,18 +52,18 @@ def group_by_length():
     except Exception as e:
         return(e)  
 
-@app.route('/one_time_expense')
-def group_by_length():
-    try:
-        excel_response = return_excel_data('One_Time_Expense')
-        return(excel_response)
-    except Exception as e:
-        return(e)  
+# @app.route('/one_time_expense')
+# def group_by_length():
+#     try:
+#         excel_response = return_excel_data('One_Time_Expense')
+#         return(excel_response)
+#     except Exception as e:
+#         return(e)  
 
-@app.route('/personal_expense_breakdown')
-def group_by_length():
-    try:
-        excel_response = return_excel_data('Annual_Personal_Breakdown')
-        return(excel_response)
-    except Exception as e:
-        return(e)  
+# @app.route('/personal_expense_breakdown')
+# def group_by_length():
+#     try:
+#         excel_response = return_excel_data('Annual_Personal_Breakdown')
+#         return(excel_response)
+#     except Exception as e:
+#         return(e)  
