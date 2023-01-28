@@ -24,6 +24,7 @@ def return_dict(v_results_df,v_display_column):
     my_dict = {}
     for key,value in zip(v_results_df[v_display_column],v_results_df['Monthly_Amount']):
         my_dict[key] = value
+    print(my_dict)
     return(my_dict)
 
 
@@ -32,6 +33,7 @@ def group_by_length():
     try:
         results_df = expenses_df.groupby('Spend_Duration')['Monthly_Amount'].sum().reset_index().sort_values(by='Monthly_Amount',ascending=False)
         output_dict = return_dict(results_df,'Spend_Duration')
+        print(output_dict)
         return(output_dict)
     except Exception as e:
         return(e)
@@ -41,6 +43,7 @@ def group_by_type():
     try:
         results_df = expenses_df.groupby('Spend_Type')['Monthly_Amount'].sum().reset_index().sort_values(by='Monthly_Amount',ascending=False)
         output_dict = return_dict(results_df,'Spend_Type')
+        print(output_dict)
         return(output_dict)
     except Exception as e:
         return(e)
