@@ -44,7 +44,10 @@ def return_excel_data(v_results_df,column_name):
 def group_by_length():
     try:
         results_df = expenses_df.groupby('Spend_Duration')['Monthly_Amount'].sum().reset_index()
-        return_excel_data(results_df,'Spend_Duration')
+        my_dict = {}
+        for key,value in zip(results_df['Spend_Duration'],results_df['Monthly_Amount']):
+            my_dict[key] = value
+        return(my_dict)
     except Exception as e:
         return(e)
 
