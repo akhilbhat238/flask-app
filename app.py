@@ -60,7 +60,9 @@ def group_by_length():
 def group_by_type():
     try:
         results_df = expenses_df.groupby('Spend_Type')['Monthly_Amount'].sum().reset_index()
-        return_excel_data(results_df,'Spend_Type')
+        # return_excel_data(results_df,'Spend_Type')
+        output_dict = return_dict(results_df,'Spend_Type')
+        return(output_dict)
     except Exception as e:
         return(e)
 
@@ -68,7 +70,9 @@ def group_by_type():
 def group_by_category():
     try:
         results_df = expenses_df.groupby(['Spend_Type','Category'])['Monthly_Amount'].sum().reset_index()
-        return_excel_data(results_df,'Category')
+        # return_excel_data(results_df,'Category')
+        output_dict = return_dict(results_df,'Category')
+        return(output_dict)
     except Exception as e:
         return(e)
 
@@ -76,7 +80,9 @@ def group_by_category():
 def annual_expense():
     try:
         results_df = expenses_df[expenses_df['Spend_Duration']=='A'][['Particular','Monthly_Amount']]
-        return_excel_data(results_df,'Particular')
+        # return_excel_data(results_df,'Particular')
+        output_dict = return_dict(results_df,'Particular')
+        return(output_dict)
     except Exception as e:
         return(e)
 
@@ -84,7 +90,9 @@ def annual_expense():
 def monthly_expense():
     try:
         results_df = expenses_df[expenses_df['Spend_Duration']=='M'][['Particular','Monthly_Amount']]
-        return_excel_data(results_df,'Particular')
+        # return_excel_data(results_df,'Particular')
+        output_dict = return_dict(results_df,'Particular')
+        return(output_dict)
     except Exception as e:
         return(e) 
 
@@ -92,7 +100,9 @@ def monthly_expense():
 def one_time_expense():
     try:        
         results_df = expenses_df[expenses_df['Spend_Duration']=='O'][['Particular','Monthly_Amount']]
-        return_excel_data(results_df,'Particular')
+        # return_excel_data(results_df,'Particular')
+        output_dict = return_dict(results_df,'Particular')
+        return(output_dict)
     except Exception as e:
         return(e)  
 
@@ -100,6 +110,8 @@ def one_time_expense():
 def personal_expenses():
     try:
         results_df = expenses_df[(expenses_df['Spend_Duration']=='A')&(expenses_df['Category']=='Personal Purchase')][['Particular','Monthly_Amount']]
-        return_excel_data(results_df,'Particular')
+        # return_excel_data(results_df,'Particular')
+        output_dict = return_dict(results_df,'Particular')
+        return(output_dict)
     except Exception as e:
         return(e)
