@@ -22,7 +22,7 @@ expenses_df = expenses_df[['Date', 'Particular', 'Category', 'Spend_Type', 'Tota
 def return_excel_data(v_results_df,column_name):
     my_dict = {}
     for key,value in zip(v_results_df[column_name],v_results_df['Monthly_Amount']):
-            my_dict[key] = value
+        my_dict[key] = value
     return(my_dict)
     # if sheet_name in ['Group_By_Length','Group_By_Type','Group_By_Type_Category']:
     #     type_df = pd.read_excel(xls, sheet_name)
