@@ -15,6 +15,9 @@ def create_onedrive_directdownload (onedrive_link):
 one_drive_link = "https://1drv.ms/x/s!AtIkLugUST4_gbt9Bp4t95oAEJXkbA?e=OVhXnA"
 one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
 xls = pd.ExcelFile(one_drive_direct_link)
+expenses_df = pd.read_excel(xls, 'All_Expenses')
+expenses_df.columns = ['Date', 'Particular', 'Category', 'Spend_Type','Total_Amount', 'Spend_Duration', 'Divide_By','Monthly_Amount']
+expenses_df = expenses_df[[['Date', 'Particular', 'Category', 'Spend_Type', 'Total_Amount','Spend_Duration', 'Monthly_Amount']]]
 
 def return_excel_data(sheet_name):
     my_dict = {}
@@ -89,3 +92,14 @@ def personal_expenses():
         return(excel_response)
     except Exception as e:
         return(e)  
+
+@app.route('/pandas')
+def pandas_return():
+    try:
+        results_df = expenses_df.groupby('Spend_Duration')['Monthly_Amount'].sum().reset_index()
+        my_dict = {}
+        for key,value in zip(results_df['Spend_Duration'],results_df['Monthly_Amount']):
+            my_dict[key] = value
+        return(my_dict)
+    except Exception as e:
+        return(e)
