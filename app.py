@@ -17,7 +17,7 @@ one_drive_direct_link = create_onedrive_directdownload(one_drive_link)
 xls = pd.ExcelFile(one_drive_direct_link)
 expenses_df = pd.read_excel(xls, 'All_Expenses')
 expenses_df.columns = ['Date', 'Particular', 'Category', 'Spend_Type','Total_Amount', 'Spend_Duration', 'Divide_By','Monthly_Amount']
-expenses_df = expenses_df[[['Date', 'Particular', 'Category', 'Spend_Type', 'Total_Amount','Spend_Duration', 'Monthly_Amount']]]
+expenses_df = expenses_df[['Date', 'Particular', 'Category', 'Spend_Type', 'Total_Amount','Spend_Duration', 'Monthly_Amount']]
 
 def return_excel_data(sheet_name):
     my_dict = {}
